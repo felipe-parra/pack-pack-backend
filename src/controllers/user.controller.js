@@ -62,11 +62,11 @@ const createOneUser = async (req, res) => {
       id: userCreated.mail,
     };
 
-    delete userCreated.password;
+    delete userCreated["_doc"].password;
     handleSuccessResponse({
       statusCode: 201,
       msg: "register successfully",
-      data: { ...userCreated },
+      data: { ...userCreated["_doc"] },
       res,
     });
   } catch (error) {

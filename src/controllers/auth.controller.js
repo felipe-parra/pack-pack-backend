@@ -8,8 +8,9 @@ const signUp = async (req, res) => {
     const user = {
       ...req.body,
     };
-    console.log(user);
+
     user.password = await User.encryptPassword(user.password);
+
     const emailValidation = await User.emailValidation(user.mail);
 
     if (!emailValidation) {
